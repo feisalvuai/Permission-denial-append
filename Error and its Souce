@@ -1,0 +1,33 @@
+                                               Permission Denial
+                                               
+Denial of acess through some file  in Unix system both Linex and Unix has been designed to restrict and prohibite
+newbies from destroying their own systems hence Unix is an open System. 
+This error is mainly caused due to the restrictions embaded into the Unix system in order not to harm themself.
+Here is an Example of it when we want to append, edit   (php.ini ) the system deniel is imforced.
+
+Error:
+codes 1:
+~MacBookAir:/etc/php/7.4/cli$ sudo vi echo "zend_extension=/etc/php/7.4/cli/xdebug" >> /etc/php/7.4/cli/php.ini exit
+bash: /etc/php/7.4/cli/php.ini
+: Permission denied
+
+codes 2: 
+~MacBookAir:/etc/php/7.4/cli$ vi echo "zend_extension=/etc/php/7.4/cli/xdebug" >> /etc/php/7.4/cli/php.ini exit
+bash: /etc/php/7.4/cli/php.ini
+: Permission denied
+
+Solution:
+The use of 'tee' , 'grep' with 'sudo' eradicate this problem and easy the pass to the Restiction on the file and makes its possible to append.
+format:
+echo "Put your text thats you wants to append here" | sudo tee -a <file you wants to append to>
+press "Enter",
+will be prompt for password of your system and done!
+
+example:
+/$ echo "xdebug.remote_host = host.docker.internal" | sudo tee -a php.ini exit
+[sudo] password for [$User]: 
+#This is appended and done
+xdebug.remote_host = host.docker.internal
+
+
+
